@@ -118,16 +118,16 @@
     }
   </script>
 
-  <link rel="stylesheet" href="../../codemirror/lib/codemirror.css">
-  <script src="../../codemirror/lib/codemirror.js"></script>
-  <script src="../../codemirror/mode/daimio/daimio.js"></script>
+  <link rel="stylesheet" href="../../resources/codemirror/lib/codemirror.css">
+  <script src="../../resources/codemirror/lib/codemirror.js"></script>
+  <script src="../../resources/codemirror/mode/daimio/daimio.js"></script>
 
-  <link rel="stylesheet" href="../../codemirror/addon/hint/show-hint.css">
-  <script src="../../codemirror/addon/hint/show-hint.js"></script>
-  <script src="../../codemirror/addon/hint/daimio-hint.js"></script>
+  <link rel="stylesheet" href="../../resources/codemirror/addon/hint/show-hint.css">
+  <script src="../../resources/codemirror/addon/hint/show-hint.js"></script>
+  <script src="../../resources/codemirror/addon/hint/daimio-hint.js"></script>
 
-  <script src="../../codemirror/addon/display/placeholder.js"></script>
-  <script src="../../codemirror/addon/emmet/emmet.js"></script>
+  <script src="../../resources/codemirror/addon/display/placeholder.js"></script>
+  <script src="../../resources/codemirror/addon/emmet/emmet.js"></script>
 
   <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function() {
@@ -254,7 +254,7 @@
       })
 
       repl_display = function(code) {
-        D.run(code, function(value) {
+        D.run(code, OuterSpace, function(value) {
           // preprocess history: remove existing copies of this item
           while(history_list.indexOf(code) != -1)
             history_list.splice(history_list.indexOf(code), 1)
@@ -267,7 +267,7 @@
           history_el.innerHTML = '<p class="input">'  + code + '</p>'
                             + '<p class="result">' + (value || '&nbsp;') + '</p>'
                             + history_el.innerHTML
-        }, OuterSpace)
+        })
       }
 
       // from http://stackoverflow.com/questions/13026285/codemirror-for-just-one-line-textfield
