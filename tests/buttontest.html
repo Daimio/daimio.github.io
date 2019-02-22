@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test for weird things</title>
+  <script type="text/javascript" src="../daimio_composite.js"></script>
+</head>
+<body id="foo">
+
+  <button id="button">Yo</button>
+  <div id="output"></div>
+
+  <script type="text/daimio" class="spaceseeds">
+    outer
+      @foo dom-on-keypress
+      @foo -> {__.which | tap}
+
+      @button dom-on-click
+      @output dom-set-text
+
+      init
+        {5 | range | map block "{5 | range | map block 1}" | >$grid}
+
+      show
+        lalalallala {$grid}
+
+      @button -> init -> show -> @output
+  </script>
+
+
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+      OuterSpace = D.make_me_a_space_as_fast_as_you_can() // published for debug
+    })
+  </script>
+
+</body>
+</html>
